@@ -24,22 +24,32 @@ function App() {
   }, [])
 
   return (
-    <div style={{ maxWidth: 500, margin: "40px auto", padding: "0 20px" }}>
-      <h1>Daftar User</h1>
+    <div className="min-h-screen bg-gray-100 font-sans">
+      <div className="max-w-lg mx-auto pt-16 px-4">
 
-      {loading && <p style={{ color: "#aaa" }}>Memuat data...</p>}
+        <h1 className="text-3xl font-bold text-gray-800 mb-2">Daftar User</h1>
+        <p className="text-gray-400 text-sm mb-8">Data dari JSONPlaceholder API</p>
 
-      {error && <p style={{ color: "red" }}>{error}</p>}
+        {loading && (
+          <p className="text-center text-gray-400 py-16">Memuat data...</p>
+        )}
 
-      {users.map((user) => (
-        <div key={user.id} style={{ border: "1px solid #ddd", borderRadius: 8, padding: 16, marginBottom: 12 }}>
-          <h3>{user.name}</h3>
-          <p style={{ color: "#666", fontSize: 14 }}>Email: {user.email}</p>
-          <p style={{ color: "#666", fontSize: 14 }}>Kota: {user.address.city}</p>
-        </div>
-      ))}
+        {error && (
+          <p className="text-center text-red-400 py-16">{error}</p>
+        )}
+
+        {users.map((user) => (
+          <div key={user.id} className="bg-white rounded-xl shadow-sm border border-gray-100 px-5 py-4 mb-3">
+            <h3 className="font-semibold text-gray-800 mb-1">{user.name}</h3>
+            <p className="text-gray-500 text-sm">Email: {user.email}</p>
+            <p className="text-gray-500 text-sm">Kota: {user.address.city}</p>
+            <p className="text-gray-500 text-sm">Website: {user.website}</p>
+          </div>
+        ))}
+      
+      </div>
     </div>
   )
 }
-
+  
 export default App
